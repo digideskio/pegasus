@@ -37,7 +37,8 @@ gem 'grape-active_model_serializers'
 gem 'lodash-rails'
 gem 'slim'
 gem 'foundation-rails'
-gem 'vuejs-rails'
+# gem 'vuejs-rails'
+gem 'browser-notifications-rails', github: 'yukimono/browser-notifications-rails'
 
 group :development, :test do
   gem 'capistrano-rails'

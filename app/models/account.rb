@@ -1,4 +1,6 @@
 class Account < ActiveRecord::Base
+  include PagableMixin
+
   acts_as_paranoid
 
   devise :database_authenticatable, :registerable,
@@ -21,7 +23,7 @@ class Account < ActiveRecord::Base
   has_many :reportees, foreign_key: 'entity_owner_id', class_name: 'Report'
   has_many :assignees, foreign_key: 'assignee_id', class_name: 'Report'
   has_many :logins
-  has_many :apps, foreign_key: 'resource_owner_id', class_name: 'App', dependent: :destroy
+  has_many :apps, as: 'owner', class_name: 'App', dependent: :destroy
 
   has_one  :profile
   has_one  :theme

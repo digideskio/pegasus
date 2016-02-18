@@ -1,0 +1,7 @@
+{
+  "name": "pegasus",
+  "directory": "vendor/assets/bower_components",
+  "dependencies": {
+    "octicons": "*"
+  }
+}

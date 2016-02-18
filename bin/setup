@@ -19,6 +19,7 @@ Dir.chdir APP_ROOT do
 
   puts '\n== Setting node up =='
   system 'bin/rake npm:install'
+  system 'node_modules/.bin/bower install'
 
   puts '\n== Preparing database =='
   system 'bin/rake db:setup'

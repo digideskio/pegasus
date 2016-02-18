@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160218120138) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "flags",                  default: 1
+    t.datetime "deleted_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
@@ -50,9 +51,10 @@ ActiveRecord::Schema.define(version: 20160218120138) do
     t.integer  "question_id"
     t.string   "answer"
     t.integer  "app_id"
+    t.integer  "deleted_by_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "answers", ["account_id"], name: "index_answers_on_account_id", using: :btree
@@ -89,9 +91,10 @@ ActiveRecord::Schema.define(version: 20160218120138) do
     t.integer  "answer_id"
     t.string   "comment"
     t.integer  "app_id"
+    t.integer  "deleted_by_id"
     t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "comments", ["account_id"], name: "index_comments_on_account_id", using: :btree
@@ -215,17 +218,19 @@ ActiveRecord::Schema.define(version: 20160218120138) do
   add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
   create_table "oauth_applications", force: :cascade do |t|
-    t.string   "name",                           null: false
-    t.string   "uid",                            null: false
-    t.string   "secret",                         null: false
-    t.text     "redirect_uri",                   null: false
-    t.string   "scopes",            default: "", null: false
-    t.integer  "resource_owner_id",              null: false
+    t.string   "name",                      null: false
+    t.string   "uid",                       null: false
+    t.string   "secret",                    null: false
+    t.text     "redirect_uri",              null: false
+    t.string   "scopes",       default: "", null: false
+    t.integer  "owner_id",                  null: false
+    t.integer  "owner_type",                null: false
+    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "oauth_applications", ["resource_owner_id"], name: "index_oauth_applications_on_resource_owner_id", using: :btree
+  add_index "oauth_applications", ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type", using: :btree
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
   create_table "profiles", force: :cascade do |t|
@@ -243,12 +248,13 @@ ActiveRecord::Schema.define(version: 20160218120138) do
   create_table "questions", force: :cascade do |t|
     t.integer  "account_id"
     t.string   "question"
-    t.integer  "private",    default: 0,     null: false
-    t.boolean  "anonymous",  default: false, null: false
+    t.integer  "private",       default: 0,     null: false
+    t.boolean  "anonymous",     default: false, null: false
     t.integer  "app_id"
+    t.integer  "deleted_by_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "questions", ["account_id"], name: "index_questions_on_account_id", using: :btree

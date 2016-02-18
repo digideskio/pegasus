@@ -1,6 +1,8 @@
-require 'alaska/runtime'
+if (/mingw32/ =~ RUBY_PLATFORM).nil?
+  require 'alaska/runtime'
 
-if Rails.env == 'development' || Rails.env == 'test' || ENV['RAILS_GROUPS'] == 'assets'
-  # use alaska.js pipelining only when precompiling assets
-  ExecJS.runtime = Alaska::Runtime.new(debug: true)
+  if Rails.env == 'development' || Rails.env == 'test' || ENV['RAILS_GROUPS'] == 'assets'
+    # use alaska.js pipelining only when precompiling assets
+    ExecJS.runtime = Alaska::Runtime.new(debug: true)
+  end
 end
