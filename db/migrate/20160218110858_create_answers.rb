@@ -5,8 +5,9 @@ class CreateAnswers < ActiveRecord::Migration
       t.references :question, index: true
       t.string :answer
       t.references :app, index: true
-      t.datetime :deleted_at
 
+      t.references :deleted_by
+      t.datetime :deleted_at
       t.timestamps null: false
     end
 

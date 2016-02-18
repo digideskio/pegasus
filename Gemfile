@@ -53,6 +53,7 @@ group :development do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rubocop'
+  gem 'rails-erd'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

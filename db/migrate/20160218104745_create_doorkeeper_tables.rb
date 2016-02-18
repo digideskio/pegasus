@@ -7,6 +7,7 @@ class CreateDoorkeeperTables < ActiveRecord::Migration
       t.text    :redirect_uri,      null: false
       t.string  :scopes,            null: false, default: ''
       t.integer :resource_owner_id, null: false
+      t.datetime :deleted_at
       t.timestamps
     end
 

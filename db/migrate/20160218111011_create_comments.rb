@@ -5,8 +5,9 @@ class CreateComments < ActiveRecord::Migration
       t.references :answer, index: true
       t.string :comment
       t.references :app, index: true
-      t.datetime :deleted_at
 
+      t.references :deleted_by
+      t.datetime :deleted_at
       t.timestamps null: false
     end
 
