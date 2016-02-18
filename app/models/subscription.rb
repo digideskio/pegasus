@@ -10,6 +10,7 @@ class Subscription < ActiveRecord::Base
 
       n = base.clone
       n.account = record.account
+      n.save
     end
   end
 end
