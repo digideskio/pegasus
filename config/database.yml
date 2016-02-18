@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development: &development
+  <<: *default
+  database: pegasus
+  username: pegasus
+  password: devdevdev
+  host: localhost
+  port: 5432
+
+test:
+  <<: *development
+  database: pegasus_test
+
+production:
+  <<: *default
+  database: pegasus_production
+  username: pegasus
+  password: <%= ENV['PEGASUS_DATABASE_PASSWORD'] %>
