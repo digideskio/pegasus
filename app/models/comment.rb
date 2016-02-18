@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :account
   belongs_to :answer
-  belongs_to :app 
+  belongs_to :app
   belongs_to :deleter, primary_key: 'deleted_by_id', class_name: 'Account'
 
   has_many :reports, as: 'entity'

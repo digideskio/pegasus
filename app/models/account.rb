@@ -26,4 +26,39 @@ class Account < ActiveRecord::Base
   has_one  :profile
   has_one  :theme
   has_one  :setting
+
+  after_create :setup
+
+  def blocklist
+    follows.where(mode: Follow::FOLLOW_MODE_BLOCK)
+  end
+
+  def pending_follows
+    follows.where(mode: Follow::FOLLOW_MODE_PENDING)
+  end
+
+  def actual_follows
+    follows.where(mode: Follow::FOLLOW_MODE_NORMAL)
+  end
+
+  def combined_follows
+    follows.where.not(mode: Follow::FOLLOW_MODE_BLOCK)
+  end
+
+  private
+
+  def setup
+    Setting.create(account:                   self,
+                   allow_anonymous_questions: true,
+                   hide_follower_blocks:      false,
+                   display_themes:            true,
+                   private_account:           false,
+                   show_in_public:            true,
+                   show_in_search:            true,
+                   explicit:                  false,
+                   display_ribbon_mask:       -1,
+                   username_ribbon_id:        -1)
+    Profile.create(account: self, ribbons: 0)
+    Theme.create(account: self)
+  end
 end
