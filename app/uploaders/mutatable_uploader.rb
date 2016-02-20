@@ -1,8 +1,6 @@
-# encoding: utf-8
-
 class MutatableUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  
+
   # if $PEGASUS['storage'].nil?
   storage :file
   # else

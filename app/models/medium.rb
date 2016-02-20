@@ -5,7 +5,7 @@ class Medium < ActiveRecord::Base
   crop_uploaded :path
   process crop: :path
 
-  validates_presence_of :path
+  validates :path, presence: true
   validates_integrity_of :path
   validates_processing_of :path
 end
