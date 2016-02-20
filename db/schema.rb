@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218120138) do
+ActiveRecord::Schema.define(version: 20160220171426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,8 +129,9 @@ ActiveRecord::Schema.define(version: 20160218120138) do
     t.boolean  "private"
     t.boolean  "hide_member_blocks"
     t.boolean  "replace_home"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.boolean  "allow_public_questions"
   end
 
   add_index "groups", ["account_id"], name: "index_groups_on_account_id", using: :btree
@@ -172,6 +173,22 @@ ActiveRecord::Schema.define(version: 20160218120138) do
   end
 
   add_index "logins", ["account_id"], name: "index_logins_on_account_id", using: :btree
+
+  create_table "media", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.string   "type"
+    t.string   "path"
+    t.integer  "path_crop_x"
+    t.integer  "path_crop_y"
+    t.integer  "path_crop_w"
+    t.integer  "path_crop_h"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "media", ["owner_id", "owner_type"], name: "index_media_on_owner_id_and_owner_type", using: :btree
+  add_index "media", ["type"], name: "index_media_on_type", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "account_id"

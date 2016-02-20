@@ -21,6 +21,10 @@ gem 'omniauth-twitter'
 gem 'omniauth-tumblr'
 gem 'carrierwave'
 
+# medium
+gem 'mini_magick'
+gem 'carrierwave-crop'
+
 # render
 gem 'sass-rails'
 gem 'uglifier'
