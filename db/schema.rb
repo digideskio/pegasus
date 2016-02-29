@@ -166,10 +166,8 @@ ActiveRecord::Schema.define(version: 20160220171426) do
     t.inet     "ip"
     t.boolean  "success"
     t.string   "useragent"
-    t.string   "session_key"
-    t.datetime "remember_until"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "logins", ["account_id"], name: "index_logins_on_account_id", using: :btree

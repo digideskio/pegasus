@@ -4,8 +4,7 @@ class Account < ActiveRecord::Base
   acts_as_paranoid
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable,
-         :omniauthable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :answers, dependent: :destroy
   has_many :questions, dependent: :destroy
@@ -45,6 +44,16 @@ class Account < ActiveRecord::Base
 
   def combined_follows
     follows.where.not(mode: Follow::FOLLOW_MODE_BLOCK)
+  end
+
+  def track_link!(success = false)
+    Login.create!(account: self, ip: request.remote_ip, success: success, useragent: request.user_agent)
+    return success
+  end
+
+  # override
+  def valid_for_authentication?
+    track_link! super
   end
 
   private
