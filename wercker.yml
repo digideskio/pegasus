@@ -19,9 +19,6 @@ build:
         - rails-database-yml:
             service: postgresql-docker
         - script:
-            name: help me
-            code: export WERCKER_POSTGRESQL_ADAPTER=pg
-        - script:
             name: setup
             code: make install
         - script:
