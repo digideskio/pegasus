@@ -9,7 +9,7 @@ build:
     steps:
         - script:
             name: setup
-            code: make setup
+            code: make install
         - script:
             name: tests
             code: make test
