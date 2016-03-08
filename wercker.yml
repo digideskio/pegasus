@@ -1,10 +1,7 @@
 ruby: 2.2.4
 box: ruby
 services:
-  - id: postgres
-    env:
-      POSTGRES_PASSWORD: devdevdev
-      POSTGRES_USER: pegasus
+  - wercker/postgresql
 build:
     steps:
         - script:
@@ -16,6 +13,8 @@ build:
             code: |-
               curl -sL https://deb.nodesource.com/setup_5.x | bash -
               apt-get install -y nodejs
+        - rails-database-yml:
+            service: postgresql
         - script:
             name: setup
             code: make install
