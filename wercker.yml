@@ -1,7 +1,7 @@
 ruby: 2.2.4
 box: ruby
 services:
-  - postgresql
+  - id: postgresql
 build:
     steps:
         - script:
