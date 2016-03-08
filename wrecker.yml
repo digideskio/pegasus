@@ -1,0 +1,15 @@
+ruby: 2.2.4
+box: ruby
+services:
+  - id: postgres
+    env:
+      POSTGRES_PASSWORD: devdevdev
+      POSTGRES_USER: pegasus
+build:
+    steps:
+        - script:
+            name: setup
+            code: make setup
+        - script:
+            name: tests
+            code: make test
