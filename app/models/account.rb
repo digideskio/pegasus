@@ -30,20 +30,40 @@ class Account < ActiveRecord::Base
 
   after_create :setup
 
-  def blocklist
+  def follow(account)
+    unblock account
+    Follow.create(account: self, destination: account, mode: Follow::FOLLOW_MODE_NORMAL)
+  end
+
+  def unfollow(account)
+    obj = follows.where(destination: account).where.not(mode: Follow::FOLLOW_MODE_BLOCK).first
+    obj.destroy unless obj.nil?
+  end
+
+  def block(account)
+    unfollow account
+    Follow.create(account: self, destination: account, mode: Follow::FOLLOW_MODE_BLOCK)
+  end
+
+  def unblock(account)
+    obj = block_list.find_by(destination: account)
+    obj.destroy! unless obj.nil?
+  end
+
+  def block_list
     follows.where(mode: Follow::FOLLOW_MODE_BLOCK)
   end
 
-  def pending_follows
-    follows.where(mode: Follow::FOLLOW_MODE_PENDING)
-  end
-
-  def actual_follows
+  def follow_list
     follows.where(mode: Follow::FOLLOW_MODE_NORMAL)
   end
 
-  def combined_follows
-    follows.where.not(mode: Follow::FOLLOW_MODE_BLOCK)
+  def pending_follower_list
+    followers.where(mode: Follow::FOLLOW_MODE_PENDING)
+  end
+
+  def follower_list
+    followers.where(mode: Follow::FOLLOW_MODE_NORMAL)
   end
 
   def track_link!(success = false)

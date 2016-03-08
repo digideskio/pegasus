@@ -312,8 +312,8 @@ ActiveRecord::Schema.define(version: 20160220171426) do
     t.boolean  "show_in_public"
     t.boolean  "show_in_search"
     t.boolean  "explicit"
-    t.boolean  "display_ribbon_mask"
-    t.boolean  "username_ribbon_id"
+    t.integer  "display_ribbon_mask"
+    t.integer  "username_ribbon_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end

@@ -6,6 +6,7 @@ class MutatableUploader < CarrierWave::Uploader::Base
   # else
   # storage $PEGASUS['storage'].to_sym
   # end
+  process crop: :path
 
   def store_dir
     "uploads/#{model.owner.class.to_s.underscore}/#{model.owner.id}"

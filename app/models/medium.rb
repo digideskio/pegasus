@@ -3,7 +3,6 @@ class Medium < ActiveRecord::Base
 
   mount_uploader :path, MutatableUploader
   crop_uploaded :path
-  process crop: :path
 
   validates :path, presence: true
   validates_integrity_of :path

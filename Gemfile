@@ -45,8 +45,6 @@ gem 'foundation-rails'
 gem 'browser-notifications-rails', github: 'yukimono/browser-notifications-rails'
 
 group :development, :test do
-  gem 'capistrano-rails'
-  gem 'rspec-rails'
   gem 'brakeman'
 end
 
@@ -59,6 +57,12 @@ group :development do
   gem 'quiet_assets'
   gem 'rubocop'
   gem 'rails-erd'
+end
+
+group :test do
+  gem 'capistrano-rails'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
