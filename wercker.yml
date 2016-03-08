@@ -2,6 +2,9 @@ ruby: 2.2.4
 box: ruby
 services:
   - id: postgres
+    env:
+      POSTGRES_PASSWORD: wercker
+      POSTGRES_USER: wercker
 build:
     steps:
         - script:
@@ -14,7 +17,7 @@ build:
               curl -sL https://deb.nodesource.com/setup_5.x | bash -
               apt-get install -y nodejs
         - rails-database-yml:
-            service: postgres
+            service: postgresql-docker
         - script:
             name: help me
             code: export WERCKER_POSTGRESQL_ADAPTER=pg
