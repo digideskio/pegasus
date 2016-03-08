@@ -14,7 +14,10 @@ build:
               curl -sL https://deb.nodesource.com/setup_5.x | bash -
               apt-get install -y nodejs
         - rails-database-yml:
-            service: postgresql
+            service: postgres
+        - script:
+            name: help me
+            code: export WERCKER_POSTGRESQL_ADAPTER=pg
         - script:
             name: setup
             code: make install
