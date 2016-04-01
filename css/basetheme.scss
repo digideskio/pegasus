@@ -1,0 +1,56 @@
+.neutral {
+  color: #333;
+}
+
+.positive {
+  color: #338;
+}
+
+.negative {
+  color: #833;
+}
+
+.button-icon.neutral {
+  background: white;
+
+  &:not(.button-disabled) {
+    &:hover {
+      background: #ddd;
+    }
+
+    &:active, &:focus {
+      color:      white;
+      background: #333;
+    }
+  }
+}
+
+.button-icon.positive {
+  background: white;
+
+  &:not(.button-disabled) {
+    &:hover {
+      background: #ddd;
+    }
+
+    &:active, &:focus {
+      color:      white;
+      background: #338;
+    }
+  }
+}
+
+.button-icon.negative {
+  background: white;
+
+  &:not(.button-disabled) {
+    &:hover {
+      background: #ddd;
+    }
+
+    &:active, &:focus {
+      color:      white;
+      background: #833;
+    }
+  }
+}

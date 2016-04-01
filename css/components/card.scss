@@ -1,0 +1,122 @@
+.card {
+  width:         325px;
+  border-radius: 2px;
+  background:    white;
+  position:      relative;
+  box-shadow:    0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.card-flags {
+  position:    absolute;
+  left:        100%;
+  margin-left: 0;
+  margin-top:  8px;
+  box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    label {
+      width: auto;
+    }
+  }
+}
+
+.card-flag {
+  padding:     7px 4px;
+  line-height: auto;
+  white-space: pre;
+
+  label, .octicon {
+    display:        inline-block;
+    vertical-align: middle;
+  }
+
+  label {
+    width:    0;
+    overflow: hidden;
+  }
+}
+
+.card-header {
+  position: relative;
+  width:    325px;
+  height:   125px;
+}
+
+.card-name {
+  position: relative;
+  overflow: visible;
+
+  &:before {
+    content:           "";
+    position:          absolute;
+    background:        white;
+    top:               -20px;
+    right:             0;
+    bottom:            100%;
+    left:              0;
+    -webkit-clip-path: polygon(0 0, 100% 20px, 100% 100%, 0 100%);
+    clip-path:         polygon(0 0, 100% 20px, 100% 100%, 0 100%);
+  }
+}
+
+.card-avatar, .card-avatar-inner {
+  width:             75px;
+  height:            75px;
+  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 85%, 0 80%);
+  clip-path:         polygon(0 0, 100% 0%, 100% 85%, 0 80%);
+}
+
+.card-avatar {
+  position:      absolute;
+  padding:       5px;
+  margin:        5px;
+  top:           -40px;
+  background:    white;
+  border-radius: 2px;
+}
+
+.card-name-inner {
+  transform:   rotate(3.3561deg);
+  margin-left: 95px;
+}
+
+.card-meta {
+  background:    rgba(0, 0, 0, 0.25);
+  color:         #eee;
+  padding:       2px;
+  margin:        0 5px;
+  border-radius: 2px;
+  display:       inline-block;
+  position:      absolute;
+  top:           -24px;
+  right:         0;
+}
+
+.card-display-name, .card-screen-name {
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+.card-display-name {
+  margin-right: 35px;
+}
+
+.card-screen-name {
+  margin-right: 5px;
+  font-size:    1rem;
+
+  &:before {
+    content: "@";
+  }
+}
+
+.card-button {
+  position: absolute;
+  right:    5px;
+  top:      3px;
+}
+
+.card-description {
+  text-align: justify;
+  padding:    5px;
+}

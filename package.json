@@ -1,0 +1,23 @@
+{
+  "name": "pegasus-prototype-design",
+  "version": "1.0.0",
+  "description": "Design",
+  "scripts": {
+    "test": "make test",
+    "build": "make install",
+    "run": "make run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukimono/pegasus.git"
+  },
+  "author": "yukimono",
+  "license": "CC-BY-NC-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/yukimono/pegasus/issues"
+  },
+  "homepage": "https://github.com/yukimono/pegasus#readme",
+  "devDependencies": {
+    "bower": "^1.7.7"
+  }
+}

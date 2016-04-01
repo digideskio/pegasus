@@ -1,0 +1,24 @@
+{
+  "name": "pegasus-prototype-design",
+  "description": "Design",
+  "authors": [
+    "yukimono"
+  ],
+  "license": "CC-BY-NC-SA-4.0",
+  "homepage": "https://github.com/yukimono/pegasus",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "toast-css": "^1.1.0",
+    "browser-notifications": "git@github.com:yukimono/browser-notifications.git",
+    "normalize-css": "^4.0.0",
+    "octicons": "^3.5.0",
+    "animate.css": "animate-css#^3.5.1",
+    "skrollr": "^0.6.30"
+  }
+}
